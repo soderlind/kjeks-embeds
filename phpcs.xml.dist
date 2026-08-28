@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<ruleset name="Kjeks Embeds">
+	<description>Coding standards for the Kjeks Embeds add-on.</description>
+
+	<file>.</file>
+
+	<exclude-pattern>/vendor/*</exclude-pattern>
+	<exclude-pattern>/node_modules/*</exclude-pattern>
+
+	<arg name="extensions" value="php"/>
+	<arg name="basepath" value="."/>
+	<arg name="colors"/>
+	<arg value="sp"/>
+	<arg name="parallel" value="8"/>
+
+	<rule ref="WordPress">
+		<exclude name="WordPress.Files.FileName"/>
+		<!-- Redundant with strict_types and fully typed signatures. -->
+		<exclude name="Squiz.Commenting.FunctionComment"/>
+		<exclude name="Squiz.Commenting.VariableComment"/>
+		<exclude name="Generic.Commenting.DocComment.MissingShort"/>
+	</rule>
+
+	<config name="minimum_wp_version" value="6.8"/>
+	<config name="testVersion" value="8.3-"/>
+
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="kjeks-embeds"/>
+			</property>
+		</properties>
+	</rule>
+
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array">
+				<element value="kjeks_embeds"/>
+				<element value="KJEKS_EMBEDS"/>
+				<element value="Soderlind\KjeksEmbeds"/>
+			</property>
+		</properties>
+	</rule>
+</ruleset>

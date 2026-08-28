@@ -1,0 +1,47 @@
+{
+	"name": "soderlind/kjeks-embeds",
+	"description": "Consent-gated YouTube, Vimeo, and Google Maps embeds for Kjeks.",
+	"type": "wordpress-plugin",
+	"keywords": [
+		"wordpress",
+		"wordpress-plugin",
+		"kjeks",
+		"cookie-consent",
+		"gdpr",
+		"privacy",
+		"youtube",
+		"vimeo",
+		"google-maps",
+		"oembed"
+	],
+	"license": "GPL-2.0-or-later",
+	"require": {
+		"php": ">=8.3",
+		"soderlind/wordpress-github-updater": "^2.0"
+	},
+	"require-dev": {
+		"pestphp/pest": "^3.5",
+		"brain/monkey": "^2.6"
+	},
+	"autoload": {
+		"psr-4": {
+			"Soderlind\\KjeksEmbeds\\": "includes/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Soderlind\\KjeksEmbeds\\Tests\\": "tests/"
+		}
+	},
+	"scripts": {
+		"test": "pest"
+	},
+	"config": {
+		"allow-plugins": {
+			"pestphp/pest-plugin": true
+		},
+		"sort-packages": true
+	},
+	"minimum-stability": "stable",
+	"prefer-stable": true
+}
