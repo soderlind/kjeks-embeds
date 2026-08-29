@@ -1,5 +1,5 @@
 === Kjeks Embeds ===
-Contributors: soderlind
+Contributors: PerS
 Tags: cookies, consent, oembed, youtube, privacy
 Requires at least: 6.8
 Tested up to: 7.1

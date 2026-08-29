@@ -34,6 +34,20 @@ final class OembedGate {
 
 	public function hooks(): void {
 		add_filter( 'embed_oembed_html', array( $this, 'filter_html' ), 10, 4 );
+		add_action( 'wp_head', array( $this, 'print_styles' ) );
+	}
+
+	/**
+	 * The core/embed block reserves height with a `::before` padding-ratio
+	 * spacer meant for an absolutely-positioned iframe. Our static placeholder
+	 * would stack on top of it, so drop the spacer for wrappers we gate.
+	 */
+	public function print_styles(): void {
+		if ( is_admin() ) {
+			return;
+		}
+
+		echo '<style id="kjeks-embeds">.wp-block-embed__wrapper:has(> .kjeks-embed)::before{content:none !important;padding-top:0 !important}</style>' . "\n";
 	}
 
 	/**
@@ -61,8 +75,16 @@ final class OembedGate {
 			$id       = Providers::extract_id( $provider, $url );
 			$src      = null === $id ? '' : Providers::embed_src( $provider, $id );
 			$label    = Providers::labels()[ $provider ];
-			$width    = isset( $attr['width'] ) ? (int) $attr['width'] : 560;
-			$height   = isset( $attr['height'] ) ? (int) $attr['height'] : 315;
+
+			// Prefer the real dimensions the provider returned (correct aspect
+			// ratio) over the request's max bounding box in $attr.
+			$returned = Providers::extract_iframe( $html );
+			$width    = $returned['width'] ?? 0;
+			$height   = $returned['height'] ?? 0;
+			if ( $width <= 0 || $height <= 0 ) {
+				$width  = isset( $attr['width'] ) ? (int) $attr['width'] : 560;
+				$height = isset( $attr['height'] ) ? (int) $attr['height'] : 315;
+			}
 		} else {
 			// Any other oEmbed provider: gate it generically if it is a lone iframe.
 			$category = $config['other_iframes'];
