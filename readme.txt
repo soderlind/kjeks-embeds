@@ -5,7 +5,7 @@ Requires at least: 6.8
 Tested up to: 7.1
 Requires PHP: 8.3
 Requires Plugins: kjeks
-Stable tag: 0.1.0
+Stable tag: 0.1.1
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,6 +41,10 @@ For Google Maps, copy the src from Google's "Share → Embed a map" dialog into 
 WordPress caches the oEmbed HTML in post meta. Re-save the post or clear the oEmbed cache so the gated markup is generated. The same applies in reverse after deactivating.
 
 == Changelog ==
+
+= 0.1.1 =
+* Fix gated embed rendering: correct the aspect ratio and remove the spacer gap.
+* Register the settings submenu after the core Kjeks menu so the Embeds page resolves on single-site and Multisite.
 
 = 0.1.0 =
 * Initial release: consent-gated YouTube, Vimeo, Spotify, SoundCloud, and Dailymotion via oEmbed, a generic single-iframe fallback for any other provider, plus Google Maps via the `[kjeks_google_map]` shortcode.

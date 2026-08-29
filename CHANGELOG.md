@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.1 - 2026-08-29
+
+- Fix gated embed rendering: correct the aspect ratio and remove the spacer gap.
+- Register the settings submenu after the core Kjeks menu so the Embeds page resolves on single-site and Multisite.
+
 ## 0.1.0 - 2026-08-29
 
 - Initial release: consent-gated YouTube, Vimeo, Spotify, SoundCloud, and Dailymotion via oEmbed, a generic single-iframe fallback for any other provider, plus Google Maps via the `[kjeks_google_map]` shortcode.
