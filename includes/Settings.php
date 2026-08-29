@@ -36,21 +36,22 @@ final class Settings {
 
 	public function hooks(): void {
 		if ( is_multisite() ) {
-			add_action( 'network_admin_menu', array( $this, 'menu' ) );
+			// Priority 11: register after the core parent menu (priority 10) so the parent hookname resolves.
+			add_action( 'network_admin_menu', array( $this, 'menu' ), 11 );
 			add_action( 'admin_post_kjeks_embeds_save', array( $this, 'save' ) );
 			return;
 		}
 
-		add_action( 'admin_menu', array( $this, 'menu' ) );
+		add_action( 'admin_menu', array( $this, 'menu' ), 11 );
 		add_action( 'admin_init', array( $this, 'register_settings' ) );
 	}
 
 	public function menu(): void {
 		if ( is_multisite() ) {
 			add_submenu_page(
-				'settings.php',
+				'kjeks-network',
 				__( 'Kjeks Embeds', 'kjeks-embeds' ),
-				__( 'Kjeks Embeds', 'kjeks-embeds' ),
+				__( 'Embeds', 'kjeks-embeds' ),
 				'manage_network_options',
 				self::SLUG,
 				array( $this, 'render_network_page' )
@@ -58,9 +59,10 @@ final class Settings {
 			return;
 		}
 
-		add_options_page(
+		add_submenu_page(
+			'kjeks-network',
 			__( 'Kjeks Embeds', 'kjeks-embeds' ),
-			__( 'Kjeks Embeds', 'kjeks-embeds' ),
+			__( 'Embeds', 'kjeks-embeds' ),
 			'manage_options',
 			self::SLUG,
 			array( $this, 'render_site_page' )
@@ -145,7 +147,7 @@ final class Settings {
 
 		update_site_option( self::OPTION, $values );
 
-		wp_safe_redirect( add_query_arg( 'updated', '1', network_admin_url( 'settings.php?page=' . self::SLUG ) ) );
+		wp_safe_redirect( add_query_arg( 'updated', '1', network_admin_url( 'admin.php?page=' . self::SLUG ) ) );
 		exit;
 	}
 

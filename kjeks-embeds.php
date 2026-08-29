@@ -3,7 +3,7 @@
  * Plugin Name:       Kjeks Embeds
  * Plugin URI:        https://github.com/soderlind/kjeks-embeds
  * Description:       Consent-gated YouTube, Vimeo, and Google Maps embeds for Kjeks — withheld behind an accessible placeholder until the visitor consents.
- * Version:           0.1.0
+ * Version:           0.1.1
  * Requires at least: 6.8
  * Requires PHP:      8.3
  * Requires Plugins:  kjeks
@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'KJEKS_EMBEDS_VERSION', '0.1.0' );
+define( 'KJEKS_EMBEDS_VERSION', '0.1.1' );
 define( 'KJEKS_EMBEDS_FILE', __FILE__ );
 define( 'KJEKS_EMBEDS_DIR', plugin_dir_path( __FILE__ ) );
 define( 'KJEKS_EMBEDS_URL', plugin_dir_url( __FILE__ ) );
