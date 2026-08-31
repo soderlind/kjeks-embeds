@@ -5,7 +5,7 @@ Requires at least: 6.8
 Tested up to: 7.1
 Requires PHP: 8.3
 Requires Plugins: kjeks
-Stable tag: 0.1.1
+Stable tag: 0.2.0
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,6 +41,10 @@ For Google Maps, copy the src from Google's "Share → Embed a map" dialog into 
 WordPress caches the oEmbed HTML in post meta. Re-save the post or clear the oEmbed cache so the gated markup is generated. The same applies in reverse after deactivating.
 
 == Changelog ==
+
+= 0.2.0 =
+* Show the embed settings as an "Embeds" tab on the core Kjeks "Cookie Consent" screen instead of a separate submenu.
+* Render the per-provider category pickers as standard form-table rows to match the shared card look.
 
 = 0.1.1 =
 * Fix gated embed rendering: correct the aspect ratio and remove the spacer gap.
