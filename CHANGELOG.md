@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.0 - 2026-08-31
+
+- Show the embed settings as an "Embeds" tab on the core Kjeks "Cookie Consent" screen instead of a separate submenu.
+- Render the per-provider category pickers as standard `form-table` rows so the tab matches the shared card look used by the other add-on tabs.
+
 ## 0.1.1 - 2026-08-29
 
 - Fix gated embed rendering: correct the aspect ratio and remove the spacer gap.

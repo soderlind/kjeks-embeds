@@ -10,6 +10,8 @@ declare(strict_types=1);
 use Brain\Monkey;
 use Brain\Monkey\Functions;
 
+require_once __DIR__ . '/stubs/AbstractFormTab.php';
+
 uses()
 	->beforeEach(
 		function (): void {
